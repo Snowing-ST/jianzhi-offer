@@ -1,6 +1,6 @@
 # 剑指offer
 
-剑指offer的上面的练习（Python）
+剑指offer上面的题目（Python解法）
 
 - 本地同步到github：
 ```
@@ -12,3 +12,4 @@ git push origin master
 ```
 git pull origin master
 ```
+- [牛客网剑指offer练习地址](https://www.nowcoder.com/ta/coding-interviews)
