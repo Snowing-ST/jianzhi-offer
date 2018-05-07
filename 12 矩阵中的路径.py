@@ -13,4 +13,5 @@ Created on Sun May  6 16:59:50 2018
 """
 
 def hasPath(matrix, rows, cols, path):
-    return
+    matrix
+    return 
