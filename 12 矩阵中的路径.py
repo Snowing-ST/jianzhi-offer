@@ -12,6 +12,40 @@ Created on Sun May  6 16:59:50 2018
 @author: situ
 """
 
-def hasPath(matrix, rows, cols, path):
-    matrix
-    return 
+
+class Solution:
+    def hasPath(self, matrix, rows, cols, path):
+        visited = [0]*rows*cols
+        pathLength = 0
+        for row in range(rows):
+            for col in range(cols):
+                if self.hasPathCore(matrix,rows,cols,row,col,path,visited,pathLength):
+                    return True
+        return False
+    
+    def hasPathCore(self,matrix,rows,cols,row,col,path,visited,pathLength):
+        if pathLength==len(path):
+            return True
+        haspath=0
+#        print(row,col,pathLength)
+        if row<rows and col<cols and row>=0 and col>=0 \
+            and matrix[row*cols+col]==path[pathLength] and visited[row*cols+col]==0:
+            pathLength +=1
+            visited[row*cols+col] = 1
+            haspath = self.hasPathCore(matrix,rows,cols,row+1,col,path,visited,pathLength) \
+                    or self.hasPathCore(matrix,rows,cols,row-1,col,path,visited,pathLength)\
+                    or self.hasPathCore(matrix,rows,cols,row,col+1,path,visited,pathLength)\
+                    or self.hasPathCore(matrix,rows,cols,row,col-1,path,visited,pathLength)
+            if haspath==0:
+                pathLength -=1
+                visited[row*cols+col] = 0
+        return haspath
+        
+def main():
+    matrix, rows, cols, path = "ABCESFCSADEE",3,4,"ABCCED"
+    a = Solution()
+    print(a.hasPath(matrix, rows, cols, path))
+
+if __name__=="__main__":
+    main()
+
